@@ -5,7 +5,6 @@
 }
 
 .slider {
-	border: 2px solid red;
 	display: flex;
 	justify-content: center;
 	position: relative;
@@ -16,8 +15,10 @@
 }
 
 .slider-frame {
+	min-height: 100%;
 	position: absolute;
 	display: flex;
+	transition: transform 0.5s ease;
 }
 
 .controls {
@@ -32,6 +33,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 }
 
 .left-arrow {
@@ -42,7 +44,34 @@
 	order: 3;
 }
 
+.left-arrow:hover {
+	transition: 3000ms;
+	background: rgb(0, 0, 0);
+	background: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0.5) 0%,
+		rgba(0, 0, 0, 0.0002) 100%
+	);
+}
+
+.right-arrow:hover {
+	transition: 3000ms;
+	background: rgb(0, 0, 0);
+	background: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0.0002) 0%,
+		rgba(0, 0, 0, 0.5) 100%
+	);
+}
+
+.left-arrow img,
+.right-arrow img {
+	cursor: pointer;
+}
+
 .slide-image {
+	object-position: center center;
+	object-fit: cover;
 	user-select: none;
 	-webkit-user-drag: none;
 	max-width: 100%;
