@@ -50,7 +50,7 @@
 	background: linear-gradient(
 		90deg,
 		rgba(0, 0, 0, 0.5) 0%,
-		rgba(0, 0, 0, 0.0002) 100%
+		rgba(0, 0, 0, 0.0000002) 100%
 	);
 }
 
@@ -59,7 +59,7 @@
 	background: rgb(0, 0, 0);
 	background: linear-gradient(
 		90deg,
-		rgba(0, 0, 0, 0.0002) 0%,
+		rgba(0, 0, 0, 0.0000002) 0%,
 		rgba(0, 0, 0, 0.5) 100%
 	);
 }
