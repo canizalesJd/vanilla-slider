@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Slider */ \"./src/Slider.js\");\n\r\n\r\nconst container = document.querySelector(\".slider\");\r\nconst images = [\"images/1.jpg\", \"images/2.jpg\", \"images/3.jpg\", \"images/4.jpg\"];\r\n\r\nconst slider = new _Slider__WEBPACK_IMPORTED_MODULE_0__[\"default\"](container, images, \"90vw\", \"60vh\");\r\nslider.createSlider();\r\n\n\n//# sourceURL=webpack://vanilla-slider/./src/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Slider */ \"./src/Slider.js\");\n\r\n\r\nconst container = document.querySelector(\".slider\");\r\nconst images = [\"images/1.jpg\", \"images/2.jpg\", \"images/3.jpg\", \"images/4.jpg\"];\r\n\r\nconst slider = new _Slider__WEBPACK_IMPORTED_MODULE_0__[\"default\"](container, images, \"100%\", \"100%\");\r\nslider.createSlider();\r\n\n\n//# sourceURL=webpack://vanilla-slider/./src/main.js?");
 
 /***/ })
 
