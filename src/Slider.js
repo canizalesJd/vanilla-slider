@@ -54,6 +54,7 @@ export default class Slider {
 		this.leftArrow.appendChild(this.arrowLeftButton);
 		this.leftArrow.addEventListener("click", () => {
 			this.slideLeft();
+			this.updateCircleButtons();
 		});
 
 		this.rightArrow = document.createElement("div");
@@ -64,6 +65,7 @@ export default class Slider {
 		this.rightArrow.appendChild(this.arrowRightButton);
 		this.rightArrow.addEventListener("click", () => {
 			this.slideRight();
+			this.updateCircleButtons();
 		});
 
 		this.circles = document.createElement("div");
@@ -80,6 +82,18 @@ export default class Slider {
 			circleButton.classList.add("empty");
 			circleButton.src = "assets/empty-circle.svg";
 			this.circles.appendChild(circleButton);
+		});
+		this.updateCircleButtons();
+	}
+
+	updateCircleButtons() {
+		this.circleButtons = this.circles.querySelectorAll(".circle-button");
+		this.circleButtons.forEach((button, index) => {
+			if (index === this.currentSlide) {
+				button.src = "assets/filled-circle.svg";
+			} else {
+				button.src = "assets/empty-circle.svg";
+			}
 		});
 	}
 }
