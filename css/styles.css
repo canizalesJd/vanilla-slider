@@ -67,6 +67,7 @@
 .left-arrow img,
 .right-arrow img {
 	cursor: pointer;
+	max-height: 2em;
 }
 
 .slide-image {
@@ -88,7 +89,7 @@
 
 .circle-button {
 	cursor: pointer;
-	max-height: 8px;
+	max-height: 0.5em;
 	margin: 0px 10px;
 	user-select: none;
 	-webkit-user-drag: none;
@@ -98,4 +99,14 @@
 	min-width: 100vw;
 	height: 600px;
 	max-height: 100vh;
+}
+
+.show {
+	opacity: 1;
+	transition: 300ms;
+}
+
+.hide {
+	opacity: 0;
+	transition: 300ms;
 }
