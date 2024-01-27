@@ -5,6 +5,7 @@ export default class Slider {
 		width,
 		height,
 		autoplay = true,
+		autoplayTime = 5000,
 		controls = true,
 		currentSlide = 0
 	) {
@@ -17,6 +18,8 @@ export default class Slider {
 		this.currentSlide = currentSlide;
 		this.container.style.width = this.width;
 		this.container.style.height = this.height;
+		this.autoplay = autoplay;
+		this.autoplayTime = autoplayTime;
 	}
 
 	slideTo(index) {
@@ -29,16 +32,27 @@ export default class Slider {
 		this.currentSlide =
 			(this.currentSlide - 1 + this.images.length) % this.images.length;
 		this.updateSliderFrame();
+		this.updateCircleButtons();
 	}
 
 	slideRight() {
 		this.currentSlide = (this.currentSlide + 1) % this.images.length;
 		this.updateSliderFrame();
+		this.updateCircleButtons();
 	}
 
 	updateSliderFrame() {
 		const translateValue = -this.currentSlide * 100;
 		this.sliderFrame.style.transform = `translateX(${translateValue}%)`;
+	}
+
+	autoSlide() {
+		const imageCount = this.images.length;
+		if (this.autoplay && imageCount > 1) {
+			this.autoplayInterval = setInterval(() => {
+				this.slideRight();
+			}, this.autoplayTime);
+		}
 	}
 
 	createSlider() {
@@ -55,10 +69,19 @@ export default class Slider {
 		this.controlsContainer.appendChild(this.leftArrow);
 		this.arrowLeftButton = document.createElement("img");
 		this.arrowLeftButton.src = "assets/arrow-left.svg";
+		this.arrowLeftButton.classList.add("hide");
 		this.leftArrow.appendChild(this.arrowLeftButton);
 		this.leftArrow.addEventListener("click", () => {
 			this.slideLeft();
 			this.updateCircleButtons();
+		});
+		this.leftArrow.addEventListener("mouseover", () => {
+			this.arrowLeftButton.classList.remove("hide");
+			this.arrowLeftButton.classList.add("show");
+		});
+		this.leftArrow.addEventListener("mouseout", () => {
+			this.arrowLeftButton.classList.remove("show");
+			this.arrowLeftButton.classList.add("hide");
 		});
 
 		this.rightArrow = document.createElement("div");
@@ -67,9 +90,18 @@ export default class Slider {
 		this.arrowRightButton = document.createElement("img");
 		this.arrowRightButton.src = "assets/arrow-right.svg";
 		this.rightArrow.appendChild(this.arrowRightButton);
+		this.arrowRightButton.classList.add("hide");
 		this.rightArrow.addEventListener("click", () => {
 			this.slideRight();
 			this.updateCircleButtons();
+		});
+		this.rightArrow.addEventListener("mouseover", () => {
+			this.arrowRightButton.classList.remove("hide");
+			this.arrowRightButton.classList.add("show");
+		});
+		this.rightArrow.addEventListener("mouseout", () => {
+			this.arrowRightButton.classList.remove("show");
+			this.arrowRightButton.classList.add("hide");
 		});
 
 		this.circles = document.createElement("div");
@@ -88,6 +120,7 @@ export default class Slider {
 			this.circles.appendChild(circleButton);
 		});
 		this.updateCircleButtons();
+		this.autoSlide();
 	}
 
 	updateCircleButtons() {
