@@ -19,17 +19,21 @@ export default class Slider {
 		this.container.style.height = this.height;
 	}
 
+	slideTo(index) {
+		this.currentSlide = parseInt(index);
+		this.updateSliderFrame();
+		this.updateCircleButtons();
+	}
+
 	slideLeft() {
 		this.currentSlide =
 			(this.currentSlide - 1 + this.images.length) % this.images.length;
 		this.updateSliderFrame();
-		// console.log(this.currentSlide);
 	}
 
 	slideRight() {
 		this.currentSlide = (this.currentSlide + 1) % this.images.length;
 		this.updateSliderFrame();
-		// console.log(this.currentSlide);
 	}
 
 	updateSliderFrame() {
@@ -88,12 +92,26 @@ export default class Slider {
 
 	updateCircleButtons() {
 		this.circleButtons = this.circles.querySelectorAll(".circle-button");
+		// Remove existing event listeners
+		this.circleButtons.forEach((button) => {
+			button.removeEventListener("click", this.handleCircleButtonClick);
+		});
+
 		this.circleButtons.forEach((button, index) => {
+			button.dataset.index = index;
 			if (index === this.currentSlide) {
 				button.src = "assets/filled-circle.svg";
 			} else {
 				button.src = "assets/empty-circle.svg";
 			}
+			button.addEventListener("click", this.handleCircleButtonClick);
 		});
 	}
+
+	handleCircleButtonClick = (event) => {
+		const index = event.currentTarget.dataset.index;
+		if (!isNaN(index) && index >= 0 && index < this.images.length) {
+			this.slideTo(index);
+		}
+	};
 }
