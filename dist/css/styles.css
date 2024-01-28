@@ -95,12 +95,6 @@
 	-webkit-user-drag: none;
 }
 
-.full-width {
-	min-width: 100vw;
-	height: 600px;
-	max-height: 100vh;
-}
-
 .show {
 	opacity: 1;
 	transition: 300ms;
@@ -109,4 +103,30 @@
 .hide {
 	opacity: 0;
 	transition: 300ms;
+}
+
+.w-100 {
+	min-width: 100vw;
+}
+
+.w-90 {
+	min-width: 90vw;
+}
+
+.w-75 {
+	min-width: 75vw;
+}
+
+.w-50 {
+	min-width: 50vw;
+}
+
+.h-600p {
+	height: 600px;
+	max-height: 100vh;
+}
+
+.h-300p {
+	height: 300px;
+	max-height: 100vh;
 }
