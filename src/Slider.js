@@ -22,12 +22,19 @@ export default class Slider {
 		this.autoplayTime = autoplayTime;
 	}
 
+	/**
+	 * Slides to an specific slide index
+	 * @index  {Number}  Slide index to be slided to
+	 */
 	slideTo(index) {
 		this.currentSlide = parseInt(index);
 		this.updateSliderFrame();
 		this.updateCircleButtons();
 	}
 
+	/**
+	 * Slides to the previous slide
+	 */
 	slideLeft() {
 		this.currentSlide =
 			(this.currentSlide - 1 + this.images.length) % this.images.length;
@@ -35,17 +42,26 @@ export default class Slider {
 		this.updateCircleButtons();
 	}
 
+	/**
+	 * Slides to the next slide
+	 */
 	slideRight() {
 		this.currentSlide = (this.currentSlide + 1) % this.images.length;
 		this.updateSliderFrame();
 		this.updateCircleButtons();
 	}
 
+	/**
+	 * Moves the slide based on the currentSlide parameter
+	 */
 	updateSliderFrame() {
 		const translateValue = -this.currentSlide * 100;
 		this.sliderFrame.style.transform = `translateX(${translateValue}%)`;
 	}
 
+	/**
+	 * Automatically slides on a given interval (default: 5000ms)
+	 */
 	autoSlide() {
 		const imageCount = this.images.length;
 		if (this.autoplay && imageCount > 1) {
@@ -55,6 +71,9 @@ export default class Slider {
 		}
 	}
 
+	/**
+	 * Creates the slider
+	 */
 	createSlider() {
 		this.sliderFrame = document.createElement("div");
 		this.sliderFrame.classList.add("slider-frame");
@@ -123,6 +142,9 @@ export default class Slider {
 		this.autoSlide();
 	}
 
+	/**
+	 * Updates the circle buttons based on the currentSlide parameter.
+	 */
 	updateCircleButtons() {
 		this.circleButtons = this.circles.querySelectorAll(".circle-button");
 		// Remove existing event listeners
@@ -141,6 +163,9 @@ export default class Slider {
 		});
 	}
 
+	/**
+	 * Handles the click event on the circle buttons.
+	 */
 	handleCircleButtonClick = (event) => {
 		const index = event.currentTarget.dataset.index;
 		if (!isNaN(index) && index >= 0 && index < this.images.length) {
