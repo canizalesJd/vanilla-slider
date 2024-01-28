@@ -13,9 +13,14 @@ const slider2 = new Slider(
 	"100%",
 	"100%",
 	true,
-	2000,
+	3000,
+	true,
 	false
 );
 slider2.createSlider();
+
+const container3 = document.getElementById("slider3");
+const slider3 = new Slider(container3, images, "100%", "100%", false);
+slider3.createSlider();
 
 export default Slider;
