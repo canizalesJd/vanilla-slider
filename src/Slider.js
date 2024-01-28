@@ -78,6 +78,8 @@ export default class Slider {
 		this.sliderFrame = document.createElement("div");
 		this.sliderFrame.classList.add("slider-frame");
 
+		if (this.controls) {
+		}
 		this.controlsContainer = document.createElement("div");
 		this.controlsContainer.classList.add("controls");
 		this.container.appendChild(this.sliderFrame);
@@ -138,6 +140,7 @@ export default class Slider {
 			circleButton.src = "assets/empty-circle.svg";
 			this.circles.appendChild(circleButton);
 		});
+		!this.controls ? this.controlsContainer.classList.add("d-none") : "";
 		this.updateCircleButtons();
 		this.autoSlide();
 	}

@@ -111,6 +111,7 @@
 
 .w-90 {
 	min-width: 90vw;
+	border: 2px solid red;
 }
 
 .w-75 {
@@ -129,4 +130,12 @@
 .h-300p {
 	height: 300px;
 	max-height: 100vh;
+}
+
+.d-none {
+	display: none;
+}
+
+.d-flex {
+	display: flex;
 }
